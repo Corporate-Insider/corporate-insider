@@ -23,17 +23,15 @@ Corporate Insider is an app where past and present employees of different compan
 
 ## Issues
 
-[Superhero Api](https://superheroapi.com/) has data about some characters misplaced so I made arrays of names of Marvel and DC comic characters that have reliable data.
-
 ## DATA
 
-I used the [Superhero Api](https://superheroapi.com/) for my app, to use the [Superhero Api](https://superheroapi.com/), you have to register with your facebook account or email to get a key.
+
 
 ## Technologies
 
-- React js, React Bootstrap, Javascript, CSS, HTML5, Axios.
+- React js, React Bootstrap, Javascript, CSS, HTML5, Fetch API
 
-### How to Install Comic Geek
+### How to Install Corporate Insider
 
 - Fork and Clone this repository
 - In the directory, run npm install
@@ -42,4 +40,4 @@ I used the [Superhero Api](https://superheroapi.com/) for my app, to use the [Su
 
 I wont be accepting contributions at the moment as this is a personal project and is meant to be a solo project. If you come across any issue while using/installing the app, you can submit an issue on this repository and I will make sure to see to it.
 
-[Issue Tracker](https://github.com/alishalawani/comic-geek/issues)
+[Issue Tracker]()
