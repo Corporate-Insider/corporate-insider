@@ -1,0 +1,17 @@
+.mainCard{
+    height: 150px;
+    margin:20px 5px;
+}
+.card{
+    display: flex;
+    flex-direction: row; 
+}
+.companyLogo{
+   width: 100px; 
+   margin-right: 20px;
+}
+.companyName{
+    padding: 35px 0;
+    font-size: 2rem;
+    margin-left: 5%;
+}
