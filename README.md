@@ -8,23 +8,7 @@ Corporate Insider is an app where past and present employees of different compan
 
 ### Dashboard
 
-![image](https://i.imgur.com/M9kPtok.png)
 
-### Marvel Comics Page
-
-![image](https://i.imgur.com/1qAJwxy.png)
-
-### DC Comics Page
-
-![image](https://i.imgur.com/hOgTgVW.png)
-
-### Individual Character Info Page
-
-![image](https://i.imgur.com/wDbeV29.png)
-
-### About Page
-
-![image](https://i.imgur.com/TIomdgu.png)
 
 ### User Stories
 
