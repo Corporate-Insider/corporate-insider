@@ -3,19 +3,24 @@ import './App.css';
 import Header from './Components/Header';
 import Home from './Components/Home'
 import { Container } from 'react-bootstrap';
+import {Route} from 'react-router-dom';
+import Login from './Components/Login';
+import SignUp from './Components/SignUp';
+import About from './Components/About';
 function App() {
   let [loggedIn, setLoggedIn] = useState(false);
-  let [loggedOut, setLoggedOut] = useState(true);
+
+
+
 
   return (
 		<Container className='App'>
-			<Header
-				loggedIn={loggedIn}
-				setLoggedIn={setLoggedIn}
-				setLoggedOut={setLoggedOut}
-				loggedOut={loggedOut}
-			/>
-			<Home />
+			<Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+
+			<Route path='/' exact component={Home} />
+			<Route path='/about' component={About} />
+			<Route path='/login' component={Login} />
+			<Route path='/signup' component={SignUp} />
 		</Container>
 	);
 }
