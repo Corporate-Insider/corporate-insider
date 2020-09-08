@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-
 const createUrl = `http://localhost:8000/accounts/create_user/`;
-function SignUp(props) {
+function SignUp({setUsername}) {
     const [info, setInfo] = useState({
         name: '',
         email: '',
@@ -18,6 +17,12 @@ function SignUp(props) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(info)
+        }).then((res)=> res.json()).then((res)=>{
+            localStorage.setItem('token', res.token)
+            localStorage.setItem('user', res.user.name);
+            setUsername(res.name)
+            
+            window.location.replace('/');
         })
     };
 
@@ -25,11 +30,11 @@ function SignUp(props) {
         let targetName = event.target.name;
         let value = event.target.value;
 		if (targetName === 'email') {
-			setInfo({ email: value });
+			setInfo({ name: info.name, email: value, password: info.password });
 		} else if (targetName === 'password') {
-			setInfo({ password: value });
+			setInfo({ name: info.name, email: info.email , password: value });
 		}else if(targetName === 'username'){
-            setInfo({name: value })
+            setInfo({ name: value, email: info.email, password: info.password });
         }
 	};
 
@@ -40,14 +45,14 @@ function SignUp(props) {
 				<input
 					type='text'
 					name='username'
-					value={info.name}
+					value={info.name || ''} //because it displayed an uncontrolled error
 					onChange={handleChange}
 				/>
 				<label htmlFor='username'>Email</label>
 				<input
 					type='email'
 					name='email'
-					value={info.email}
+					value={info.email || ''}
 					onChange={handleChange}
 				/>
 
@@ -55,7 +60,7 @@ function SignUp(props) {
 				<input
 					type='password'
 					name='password'
-					value={info.password}
+					value={info.password || ''}
 					onChange={handleChange}
 				/>
 				<input type='submit' />
