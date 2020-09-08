@@ -2,9 +2,12 @@ import React from 'react';
 import './Header.css';
 import { Nav, Button, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-function Header({loggedIn, setLoggedIn}) {
-    const handleLogOut = (event) => {
-			event.preventDefault();
+function Header({loggedIn, setLoggedIn, username,setUsername }) {
+    const handleLogOut = () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            setLoggedIn(false);
+            setUsername('');
 		};
 
 	const loggedOutNav = (
@@ -25,11 +28,11 @@ function Header({loggedIn, setLoggedIn}) {
 						<Nav.Link>About</Nav.Link>
 					</LinkContainer>
 					<LinkContainer to='/login' className='button'>
-						<Button>Login</Button>
+						<Button className='btn-xs btn'>Login</Button>
 					</LinkContainer>
 
 					<LinkContainer to='/signup' className='button'>
-						<Button>SignUp</Button>
+						<Button className='btn-sm btn'>SignUp</Button>
 					</LinkContainer>
 				</Nav>
 			</Navbar.Collapse>
@@ -52,7 +55,10 @@ function Header({loggedIn, setLoggedIn}) {
 					<LinkContainer to='/about'>
 						<Nav.Link>About</Nav.Link>
 					</LinkContainer>
-					<Button onClick={handleLogOut}>Logout</Button>
+					<h5>{loggedIn ? `Hi, ${username}` : 'Please Log In'}</h5>
+					<Button onClick={handleLogOut} className='btn-sm btn'>
+						Logout
+					</Button>
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
