@@ -1,0 +1,9 @@
+.reviews{
+    margin:0 auto;
+    width: 80%;
+}
+@media (max-width: 600px) {
+	.reviews{
+        width: 100%;
+    }
+}

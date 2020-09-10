@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './Components/Header';
-import Home from './Components/Home'
+import Home from './Components/Home';
 import { Container } from 'react-bootstrap';
 import {Route, Redirect} from 'react-router-dom';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import About from './Components/About';
-import Insight from './Components/Insight'
+import Insight from './Components/Insight';
+
 
 const url = `http://localhost:8000/companies/`;
 function App() {
@@ -18,15 +19,18 @@ function App() {
   let [username, setUsername] = useState(localStorage.getItem('user'))
 
   let [companies, setCompanies] = useState([]);
-	useEffect(() => {
-		fetch(url)
+  const fetchCompanies = ()=>{
+    fetch(url)
 			.then((res) => {
 				return res.json();
 			})
 			.then((res) => {
-				console.log(res);
-				setCompanies((companies = res));
+				setCompanies(res);
 			});
+  }
+
+	useEffect(() => {
+		fetchCompanies();
 	}, []);
 
 
@@ -56,13 +60,19 @@ function App() {
 			<Route
 				path='/signup'
 				render={() => {
-					return <SignUp setLoggedIn={setLoggedIn} />;
+					return <SignUp setLoggedIn={setLoggedIn} setUsername={setUsername} />;
 				}}
 			/>
 			<Route
 				path='/insight/:company'
 				render={(routerProps) => {
-					return <Insight match={routerProps.match} companies={companies}/>;
+					return (
+						<Insight
+							match={routerProps.match}
+							companies={companies}
+							fetchCompanies={fetchCompanies}
+						/>
+					);
 				}}
 			/>
 			<Redirect path='*' to='/' />

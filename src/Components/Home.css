@@ -1,5 +1,4 @@
 .mainCard{
-    height: 150px;
     margin:20px 5px;
 }
 .card{
@@ -14,4 +13,7 @@
     padding: 35px 0;
     font-size: 2rem;
     margin-left: 5%;
+}
+.homeContainer{
+    margin-top:70px;
 }
