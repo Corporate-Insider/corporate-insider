@@ -1,0 +1,33 @@
+.reviewCard {
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+	background: rgb(213, 220, 255);
+	text-align: center;
+}
+.icon {
+	margin-left: 2%;
+	background: white;
+	width: 50px;
+}
+.cardHeader {
+	width: 100%;
+}
+.uiIcons {
+	margin-left: 60%;
+	margin-right: -25%;
+	width: 100%;
+}
+.text {
+	margin: 0 2px 7px 7px;
+}
+.modal {
+	width: 85%;
+	margin: 25% auto;
+}
+
+@media (max-width: 700px) {
+	.uiIcons {
+		margin-right: -25%;
+	}
+}
