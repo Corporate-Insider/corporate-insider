@@ -18,7 +18,8 @@ function Login({ setLoggedIn }) {
 			.then((res) => res.json())
 			.then((res) => {
                 localStorage.setItem('token', res.token);
-                localStorage.setItem('user', res.user.name)
+                localStorage.setItem('user', res.user.name);
+                localStorage.setItem('userId', res.user.id);
 				setLoggedIn(true);
                 window.location.replace('/');
 			});
