@@ -20,9 +20,11 @@ function Login({ setLoggedIn }) {
                 localStorage.setItem('token', res.token);
                 localStorage.setItem('user', res.user.name);
                 localStorage.setItem('userId', res.user.id);
-				setLoggedIn(true);
+				
+			}).then(()=>{
+                setLoggedIn(true);
                 window.location.replace('/');
-			});
+            });
 	};
 
 	const handleChange = (event) => {
