@@ -6,6 +6,7 @@ function Header({loggedIn, setLoggedIn, username,setUsername }) {
     const handleLogOut = () => {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
+            localStorage.removeItem('userId');
             setLoggedIn(false);
             setUsername('');
 		};
