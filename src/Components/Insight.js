@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Tabs, Tab, Container, Button, Modal, Form } from 'react-bootstrap';
 import Review from './Review';
 import './Insight.css';
-function Insight({ match, companies, fetchCompanies }) {
+function Insight({ match, companies, fetchCompanies, loggedIn }) {
 	const url = `http://localhost:8000/reviews/`;
 	const [key, setKey] = useState('insights');
 
@@ -107,6 +107,7 @@ function Insight({ match, companies, fetchCompanies }) {
 										fetchCompanies={fetchCompanies}
 										index={index}
 										key={index}
+										loggedIn={loggedIn}
 										companyId={company.id}
 									/>
 								);
