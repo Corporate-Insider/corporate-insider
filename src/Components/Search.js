@@ -1,24 +1,60 @@
 import React, { useState } from 'react';
 import { Form, Row, Col, Button, ListGroup } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './Search.css';
-function Search({ companies }) {
+const clearbitURL = `https://autocomplete.clearbit.com/v1/companies/suggest?query=`;
+const url = 'http://localhost:8000/companies/';
+function Search({ companies, fetchCompanies }) {
 	const [search, setSearch] = useState('');
-	const [submitted, setSubmitted] = useState(false);
-	let found = false
+    const [submitted, setSubmitted] = useState(false);
+    const [redirectRoute, setRedirectRoute] = useState('')
+	let found = false;
+	let clearbitResult = [];
 
 	function handleInputChange(event) {
 		event.preventDefault();
 		setSearch(event.target.value);
 		setSubmitted(false);
-		found = false;
-	}
-
+    }
+    
+	const createCompany = (event, company) => {
+		event.preventDefault();
+		//make a post request
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(company),
+		}).then(res => res.json()).then((res) => {
+            console.log(res);
+            fetchCompanies();
+            setRedirectRoute(`/insight/${company.name}`);
+            return <Redirect to={redirectRoute} />;
+		});
+	
+	};
+	const [fetched, setFetched] = useState('');
 	function handleSubmit(event) {
 		event.preventDefault();
-        setSubmitted(true);
-        //check if found is true
-        // if it is false, display a message that asks them if they want to add that company, if yes; make a request to clear bit, add that company, fetchCompanies, redirect them to the page of that company they created 
+		setSubmitted(true);
+		if (!found) {
+			fetch(clearbitURL + search)
+				.then((res) => res.json())
+				.then((res) => {
+					console.log(res);
+					clearbitResult = res.map((company, index) => {
+						return (
+							<ListGroup.Item
+								key={index}
+								onClick={(e) => createCompany(e, company)}>
+								{company.name}
+							</ListGroup.Item>
+						);
+					});
+					setFetched(clearbitResult);
+				});
+		}
 	}
 
 	let matchedCompanies;
@@ -40,14 +76,17 @@ function Search({ companies }) {
 				company.name.toLowerCase().charAt(0) === search.toLowerCase().charAt(0)
 			);
 		});
-    }
-    matchedCompanies = filteredCompanies ?  filteredCompanies.map((company, index)=>{
-    return (
-			<ListGroup.Item key={index}>
-				<Link to={`insight/${company.name}`}>{company.name}</Link>
-			</ListGroup.Item>
-		);
-    }): '';
+	}
+	matchedCompanies = filteredCompanies
+		? filteredCompanies.map((company, index) => {
+				return (
+					<ListGroup.Item key={index}>
+						<Link to={`insight/${company.name}`}>{company.name}</Link>
+					</ListGroup.Item>
+				);
+		  })
+		: fetched;
+
 	return (
 		<div>
 			<Row>
