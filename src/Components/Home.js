@@ -4,7 +4,7 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import Search from './Search';
 
-function Home({ companies }) {
+function Home({ companies, fetchCompanies }) {
 	let cards = companies.map((company, index) => {
 		return (
 			<Card key={index} className='mainCard'>
@@ -19,7 +19,7 @@ function Home({ companies }) {
 	});
 	return (
 		<div>
-			<Search  companies={companies}/>
+			<Search companies={companies} fetchCompanies={fetchCompanies} />
 			<Container className='homeContainer'>{cards}</Container>
 		</div>
 	);
