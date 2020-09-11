@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
+import { Redirect } from 'react-router';
 
 const createUrl = `http://localhost:8000/accounts/create_user/`;
 function SignUp({setUsername}) {
@@ -29,7 +30,7 @@ function SignUp({setUsername}) {
                             localStorage.setItem('userId', res.id);
 							setUsername(res.name);
 							console.log(res);
-							window.location.replace('/');
+							window.location.replace('/')
 						});
 				}
 			} else {
