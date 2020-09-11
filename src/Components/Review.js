@@ -4,8 +4,9 @@ import './Review.css';
 import Delete from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
-function Review({ review, fetchCompanies, companyId }) {
-	const url = `http://localhost:8000/reviews/${review.id}`;
+function Review({ review, fetchCompanies, companyId, loggedIn }) {
+	let key = process.env.API_KEY;
+	const url = `http://localhost:8000/reviews/${review.id}/${key}`;
 
 	const [edited, setEdited] = useState({
 		company_id: companyId,
@@ -27,15 +28,15 @@ function Review({ review, fetchCompanies, companyId }) {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => {
-        setEdited({
-					company_id: companyId,
-					rated: review.rated,
-					rating: review.rating,
-					review: review.review,
-					user_id: localStorage.getItem('userId'),
-				});
-        setShow(true)
-    };
+		setEdited({
+			company_id: companyId,
+			rated: review.rated,
+			rating: review.rating,
+			review: review.review,
+			user_id: localStorage.getItem('userId'),
+		});
+		setShow(true);
+	};
 	const handleEdit = (event) => {
 		event.preventDefault();
 		handleClose();
@@ -93,12 +94,16 @@ function Review({ review, fetchCompanies, companyId }) {
 				return fetchCompanies();
 			})
 			.catch(console.error);
-	};
-	let editDelete = (
+    };
+    console.log(review)
+    const id = localStorage.getItem('userId');
+    console.log(id)
+	let editDelete = (loggedIn && (id === review['user_id'])) ? (
 		<Col>
 			<EditIcon onClick={handleShow} /> <Delete onClick={handleDelete} />
 		</Col>
-	);
+	): '';
+
 	return (
 		<Row border='light' className='reviewCard'>
 			{editModal}
