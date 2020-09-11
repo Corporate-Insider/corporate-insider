@@ -1,27 +1,25 @@
 .searchInput {
 	width: 70%;
-    margin:0 auto;
+	margin: 0 auto;
 }
 .searchForm {
 	width: 95%;
 }
-.searchButton{
-    height: 32px;
-    
+.searchButton {
+	height: 32px;
 }
-.dropDown{
-    width: 40%;
-    margin-left: 10%;
+.dropDown {
+	width: 20%;
+	margin-left: 10%;
 }
 @media (max-width: 700px) {
-	.dropDown{
-    width: 40%;
-    margin-left: 6%;
-}
+	.dropDown {
+		width: 40%;
+		margin-left: 6%;
+	}
 }
 @media (min-width: 1200px) {
-	.dropDown{
-    width: 40%;
-    margin-left: 10.5%;
-}
+	.dropDown {
+		margin-left: 10.5%;
+	}
 }
