@@ -4,7 +4,7 @@ import {Link, Redirect} from 'react-router-dom';
 import './Search.css';
 const clearbitURL = `https://autocomplete.clearbit.com/v1/companies/suggest?query=`;
 const url = 'http://localhost:8000/companies/';
-function Search({ companies, fetchCompanies }) {
+function Search({ companies, fetchCompanies, loggedIn }) {
 	const [search, setSearch] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [redirectRoute, setRedirectRoute] = useState('')
@@ -95,6 +95,7 @@ function Search({ companies, fetchCompanies }) {
 						<Form.Group className='searchInput'>
 							<Form.Control
 								size='sm'
+								className='searchControl'
 								placeholder='Search by company name'
 								type='text'
 								name='searchString'
@@ -103,12 +104,14 @@ function Search({ companies, fetchCompanies }) {
 							/>
 						</Form.Group>
 
-						<Button
-							type='submit'
-							variant='dark'
-							className='btn-sm btn searchButton'>
-							Search
-						</Button>
+						{loggedIn && (
+							<Button
+								type='submit'
+								variant='dark'
+								className='btn-sm btn searchButton'>
+								Search
+							</Button>
+						)}
 					</Row>
 				</Form>
 				<ListGroup className='dropDown'>{matchedCompanies}</ListGroup>

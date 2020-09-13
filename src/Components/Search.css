@@ -1,9 +1,14 @@
 .searchInput {
 	width: 70%;
-	margin: 0 auto;
+    margin: 0 auto;
+    border: 1px solid rgba(226, 166, 226, 0.7);
+}
+.searchControl{
+    height: 100%;
+    border: 1px solid rgba(226, 166, 226, 0.7);
 }
 .searchForm {
-	width: 95%;
+	width: 88%;
 }
 .searchButton {
 	height: 32px;
@@ -22,4 +27,9 @@
 	.dropDown {
 		margin-left: 10.5%;
 	}
+}
+@media (max-width: 320px) {
+	.searchInput {
+	width: 61%;
+}
 }
