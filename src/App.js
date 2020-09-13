@@ -8,17 +8,17 @@ import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import About from './Components/About';
 import Insight from './Components/Insight';
-
+import Footer from './Components/Footer';
 const url = `http://localhost:8000/companies/`;
 const currentUserURL = 'http://localhost:8000/accounts/current_user/';
 function App() {
-	let [loggedIn, setLoggedIn] = useState(
+	const [loggedIn, setLoggedIn] = useState(
 		localStorage.getItem('token') ? true : false
 	);
 
-	let [username, setUsername] = useState('');
+  const [username, setUsername] = useState(localStorage.getItem('user'));
 
-	let [companies, setCompanies] = useState([]);
+	const [companies, setCompanies] = useState([]);
 	const fetchCompanies = () => {
 		fetch(url)
 			.then((res) => {
@@ -30,28 +30,7 @@ function App() {
 	};
 
 	useEffect(() => {
-		fetchCompanies();
-		if (loggedIn && localStorage.getItem('token')) {
-			fetch(currentUserURL, {
-				headers: {
-					Authorization: `JWT ${localStorage.getItem('token')}`,
-				},
-			})
-				.then((res) => res.json())
-				.then((res) => {
-          console.log(res);
-					if (res.name) {
-						setUsername(res.name);
-					} else {
-						setLoggedIn(false);
-					}
-				})
-				.catch((error, status) => {
-					if (status === '401') {
-						setLoggedIn(false);
-					}
-				});
-		}
+    fetchCompanies();
 	}, []);
 
 	return (
@@ -60,14 +39,14 @@ function App() {
 				loggedIn={loggedIn}
 				setLoggedIn={setLoggedIn}
 				setUsername={setUsername}
-				username={username}
+        username={username}
 			/>
 
 			<Route
 				path='/'
 				exact
 				render={() => {
-					return <Home companies={companies} fetchCompanies ={fetchCompanies}/>;
+					return <Home companies={companies} fetchCompanies ={fetchCompanies} loggedIn={loggedIn}/>;
 				}}
 			/>
 			<Route path='/about' component={About} />
@@ -80,7 +59,12 @@ function App() {
 			<Route
 				path='/signup'
 				render={() => {
-					return <SignUp setLoggedIn={setLoggedIn} setUsername={setUsername} />;
+					return (
+						<SignUp
+							setLoggedIn={setLoggedIn}
+							setUsername={setUsername}
+						/>
+					);
 				}}
 			/>
 			<Route
@@ -88,7 +72,7 @@ function App() {
 				render={(routerProps) => {
 					return (
 						<Insight
-							loggedIn={loggedIn}
+              loggedIn={loggedIn}
 							match={routerProps.match}
 							companies={companies}
 							fetchCompanies={fetchCompanies}
@@ -97,6 +81,7 @@ function App() {
 				}}
 			/>
 			<Redirect path='*' to='/' />
+      <Footer/>
 		</Container>
 	);
 }
