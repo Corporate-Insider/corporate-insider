@@ -15,11 +15,12 @@
 }
 .uiIcons {
 	margin-left: 60%;
-	margin-right: -25%;
+	margin-right: -30%;
 	width: 100%;
 }
 .text {
-	margin: 0 2px 7px 7px;
+   margin-top: 4px;
+    padding: 5px 8px;
 }
 .modal {
 	width: 85%;
@@ -29,5 +30,10 @@
 @media (max-width: 700px) {
 	.uiIcons {
 		margin-right: -25%;
+	}
+}
+@media (max-width: 320px) {
+	.uiIcons {
+		margin-right: -18%;
 	}
 }
