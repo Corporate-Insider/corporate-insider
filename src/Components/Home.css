@@ -1,5 +1,8 @@
 .mainCard{
     margin:20px 5px;
+    border: 1px solid rgb(219, 185, 219, 0.5);
+    height: 100px;
+    text-align: center;
 }
 .card{
     display: flex;
@@ -8,12 +11,53 @@
 .companyLogo{
    width: 100px; 
    margin-right: 20px;
+   height: 100%;
 }
-.companyName{
-    padding: 35px 0;
-    font-size: 2rem;
-    margin-left: 5%;
-}
+
 .homeContainer{
     margin-top:70px;
+}
+.homeItems{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 80%;
+    margin-top: 34px;
+}
+.companyName{
+    font-size: 2rem;
+    margin-left: 5%;
+    width: 50%;
+}
+
+@media (max-width:500px) {
+.homeItems{
+    flex-direction: column;
+    margin-left: 18%;
+    margin-top: 15px;
+}
+.companyName{
+    width: 100%;
+    margin-left: -25%;
+}
+.star{
+   margin-left: -5%;
+}
+
+}
+@media (max-width:400px) {
+.star{
+   margin-left: -25%;
+}
+
+}
+@media (max-width:320px) {
+    .companyName{
+    margin-left: -45%;
+}
+.star{
+   margin-left: -45%;
+   margin-right: auto;
+}
+
 }
