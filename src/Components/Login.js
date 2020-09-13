@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
 const auth = `http://localhost:8000/token-auth/`;
 function Login({ setLoggedIn }) {
-	let [info, setInfo] = useState({
+	const [info, setInfo] = useState({
 		email: '',
 		password: '',
 	});
-
+	const [wrongInput, setWrongInput] = useState(false);
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		fetch(auth, {
@@ -17,14 +18,20 @@ function Login({ setLoggedIn }) {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-                localStorage.setItem('token', res.token);
-                localStorage.setItem('user', res.user.name);
-                localStorage.setItem('userId', res.user.id);
-				
-			}).then(()=>{
-                setLoggedIn(true);
-                window.location.replace('/');
-            });
+				localStorage.setItem('token', res.token);
+				localStorage.setItem('user', res.user.name);
+				localStorage.setItem('userId', res.user.id);
+			})
+			.then((res) => {
+				setLoggedIn(true);
+				window.location.replace('/');
+			})
+			.catch((error) => {
+				if (error) {
+					setLoggedIn(false);
+					setWrongInput(true);
+				}
+			});
 	};
 
 	const handleChange = (event) => {
@@ -38,24 +45,29 @@ function Login({ setLoggedIn }) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h4>Log In</h4>
-			<label htmlFor='username'>Email</label>
-			<input
+		<Form onSubmit={handleSubmit} className='form'>
+			<h4 className='formTitle'>Log In</h4>
+			{wrongInput && <p>Email and Password do not match</p>}
+			<Form.Label htmlFor='username'>Email</Form.Label>
+			<Form.Control
+				className='control'
 				type='email'
 				name='email'
 				value={info.email || ''}
 				onChange={handleChange}
 			/>
-			<label htmlFor='password'>Password</label>
-			<input
+			<Form.Label htmlFor='password'>Password</Form.Label>
+			<Form.Control
+				className='control'
 				type='password'
 				name='password'
 				value={info.password || ''}
 				onChange={handleChange}
 			/>
-			<input type='submit' />
-		</form>
+			<Button type='submit' className='button'>
+				Submit
+			</Button>
+		</Form>
 	);
 }
 
