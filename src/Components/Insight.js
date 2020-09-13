@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Container, Button, Modal, Form } from 'react-bootstrap';
+import {
+	Tabs,
+	Tab,
+	Container,
+	Button,
+	Modal,
+	Form,
+	Row,
+} from 'react-bootstrap';
 import Review from './Review';
 import './Insight.css';
-function Insight({ match, companies, fetchCompanies, loggedIn }) {
-	const url = `http://localhost:8000/reviews/`;
-	const [key, setKey] = useState('insights');
+import StaticRating from './StaticRating';
+import StarRating from './StarRating'
 
+function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
+	const url = `http://localhost:8000/reviews/`;
+	const ratingURL = `http://localhost:8000/ratings/`;
+	const [key, setKey] = useState('insights');
+    const [value, setValue] = useState(0);
+    const [show, setShow] = useState(false);
 	let company;
 
 	companies.forEach((comp) => {
@@ -16,8 +29,6 @@ function Insight({ match, companies, fetchCompanies, loggedIn }) {
 
 	const [newReview, setReview] = useState({
 		company_id: company ? company.id : 0,
-		rated: false,
-		rating: 0,
 		review: '',
 		user_id: localStorage.getItem('userId'),
 	});
@@ -25,20 +36,16 @@ function Insight({ match, companies, fetchCompanies, loggedIn }) {
 		event.preventDefault();
 		setReview({
 			company_id: newReview.company_id,
-			rated: false,
-			rating: 0,
 			review: event.target.value,
 			user_id: newReview.user_id,
 		});
 	};
-	const [show, setShow] = useState(false);
+	
 	const handleClose = () => setShow(false);
 
 	const handleShow = () => {
 		setReview({
 			company_id: company ? company.id : 0,
-			rated: false,
-			rating: 0,
 			review: '',
 			user_id: localStorage.getItem('userId'),
 		});
@@ -87,23 +94,88 @@ function Insight({ match, companies, fetchCompanies, loggedIn }) {
 		</Modal>
 	);
 
+	let defaultRating;
+	let five = 0;
+	let four = 0;
+	let three = 0;
+	let two = 0;
+	let one = 0;
+	let rated = false;
+	if (company) {
+		company.ratings.forEach((rating) => {
+			if (rating.rating === 5) {
+				five += 1;
+			} else if (rating.rating === 4) {
+				four += 1;
+			} else if (rating.rating === 3) {
+				three += 1;
+			} else if (rating.rating === 2) {
+				two += 1;
+			} else if (rating.rating === 1) {
+				one += 1;
+			}
+
+			if (rating.user_id === parseInt(localStorage.getItem('userId'))) {
+				rated = true;
+			}
+		});
+	}
+	if (company) {
+		defaultRating =
+			(5 * five + 4 * four + 3 * three + 2 * two + one) /
+			(five + four + three + two + one);
+	}
+
+	function handleRateChange(newValue) {
+		fetch(ratingURL, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				rating: newValue,
+				company_id: company.id,
+				user_id: localStorage.getItem('userId'),
+			}),
+		}).then((res) => {
+			return fetchCompanies();
+		});
+	}
+
+	const starRating =
+		(loggedIn && rated) || !loggedIn ? (
+			<StaticRating defaultRating={defaultRating}/>
+		) : (
+			<StarRating
+				value={value}
+				setValue={setValue}
+				handleRateChange={handleRateChange}
+			/>
+		);
+
+
 	return company ? (
 		<Container>
-			<h1>{company.name}</h1>
+			<h1 className='companyInsight'>{company.name}</h1>
 			<Tabs
 				id='controlled-tab-example'
 				activeKey={key}
 				onSelect={(k) => setKey(k)}>
 				<Tab eventKey='insights' title='Company Insights'>
-					<h2>Insight Page</h2>
 					<Container>
-						<Button onClick={handleShow}>New Review</Button>
+						<div className='items'>
+							<Button onClick={handleShow} className='newReviewButton'>
+								New Review
+							</Button>
+							< div className='theStar' >{starRating}</div>
+						</div>
 						{modal}
 						<Container className='reviews'>
 							{company.reviews.map((review, index) => {
 								return (
 									<Review
 										review={review}
+										userId={userId}
 										fetchCompanies={fetchCompanies}
 										index={index}
 										key={index}
