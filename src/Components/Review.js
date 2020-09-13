@@ -3,9 +3,9 @@ import { Row, Col, Modal, Button, Form } from 'react-bootstrap';
 import './Review.css';
 import Delete from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-
-function Review({ review, fetchCompanies, companyId, loggedIn }) {
-	let key = process.env.API_KEY;
+const key = process.env.REACT_APP_MYAPI_KEY;
+function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
+	
 	const url = `http://localhost:8000/reviews/${review.id}/${key}`;
 
 	const [edited, setEdited] = useState({
@@ -13,7 +13,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn }) {
 		rated: review.rated,
 		rating: review.rating,
 		review: review.review,
-		user_id: localStorage.getItem('userId'),
+		user_id:userId,
 	});
 	const handleChangeOnEdit = (event) => {
 		event.preventDefault();
@@ -22,7 +22,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn }) {
 			rated: review.rated,
 			rating: review.rating,
 			review: event.target.value,
-			user_id: localStorage.getItem('userId'),
+			user_id: userId,
 		});
 	};
 	const [show, setShow] = useState(false);
@@ -33,7 +33,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn }) {
 			rated: review.rated,
 			rating: review.rating,
 			review: review.review,
-			user_id: localStorage.getItem('userId'),
+			user_id: userId,
 		});
 		setShow(true);
 	};
@@ -52,7 +52,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn }) {
 				rated: review.rated,
 				rating: review.rating,
 				review: review.review,
-				user_id: localStorage.getItem('userId'),
+				user_id: userId,
 			});
 			return fetchCompanies();
 		});
@@ -95,14 +95,14 @@ function Review({ review, fetchCompanies, companyId, loggedIn }) {
 			})
 			.catch(console.error);
     };
-    console.log(review)
-    const id = localStorage.getItem('userId');
-    console.log(id)
-	let editDelete = (loggedIn && (id === review['user_id'])) ? (
-		<Col>
-			<EditIcon onClick={handleShow} /> <Delete onClick={handleDelete} />
-		</Col>
-	): '';
+	let editDelete =
+		loggedIn && parseInt(userId) === review['user_id'] ? (
+			<Col>
+				<EditIcon onClick={handleShow} /> <Delete onClick={handleDelete} />
+			</Col>
+		) : (
+			''
+		);
 
 	return (
 		<Row border='light' className='reviewCard'>
