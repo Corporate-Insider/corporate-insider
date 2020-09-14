@@ -6,7 +6,7 @@ import EditIcon from '@material-ui/icons/Edit';
 const key = process.env.REACT_APP_MYAPI_KEY;
 function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 	
-	const url = `http://localhost:8000/reviews/${review.id}/${key}`;
+	const url = `https://corporate-db.herokuapp.com/reviews/${review.id}/${key}`;
 
 	const [edited, setEdited] = useState({
 		company_id: companyId,

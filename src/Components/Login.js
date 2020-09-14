@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-const auth = `http://localhost:8000/token-auth/`;
+const auth = `https://corporate-db.herokuapp.com/token-auth/`;
 function Login({ setLoggedIn }) {
 	const [info, setInfo] = useState({
 		email: '',

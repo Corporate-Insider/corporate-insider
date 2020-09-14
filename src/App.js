@@ -9,8 +9,9 @@ import SignUp from './Components/SignUp';
 import About from './Components/About';
 import Insight from './Components/Insight';
 import Footer from './Components/Footer';
-const url = `http://localhost:8000/companies/`;
-const currentUserURL = 'http://localhost:8000/accounts/current_user/';
+const url = `https://corporate-db.herokuapp.com/companies/`;
+const currentUserURL =
+	'https://corporate-db.herokuapp.com/accounts/current_user/';
 function App() {
 	const [loggedIn, setLoggedIn] = useState(
 		localStorage.getItem('token') ? true : false

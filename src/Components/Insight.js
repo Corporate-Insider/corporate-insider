@@ -14,8 +14,8 @@ import StaticRating from './StaticRating';
 import StarRating from './StarRating'
 
 function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
-	const url = `http://localhost:8000/reviews/`;
-	const ratingURL = `http://localhost:8000/ratings/`;
+	const url = `https://corporate-db.herokuapp.com/reviews/`;
+	const ratingURL = `https://corporate-db.herokuapp.com/ratings/`;
 	const [key, setKey] = useState('insights');
     const [value, setValue] = useState(0);
     const [show, setShow] = useState(false);

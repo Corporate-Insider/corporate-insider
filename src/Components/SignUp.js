@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 import './Signup.css';
-const createUrl = `http://localhost:8000/accounts/create_user/`;
+const createUrl = `https://corporate-db.herokuapp.com/accounts/create_user/`;
 function SignUp({ setUsername, setLoggedIn }) {
 	const [info, setInfo] = useState({
 		name: '',

@@ -3,7 +3,7 @@ import { Form, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import {Link, Redirect} from 'react-router-dom';
 import './Search.css';
 const clearbitURL = `https://autocomplete.clearbit.com/v1/companies/suggest?query=`;
-const url = 'http://localhost:8000/companies/';
+const url = 'https://corporate-db.herokuapp.com/companies/';
 function Search({ companies, fetchCompanies, loggedIn }) {
 	const [search, setSearch] = useState('');
     const [submitted, setSubmitted] = useState(false);
