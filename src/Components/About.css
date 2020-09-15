@@ -1,12 +1,22 @@
-.about-image-container{
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap');
+.about-image-container {
+	text-align: center;
 }
-.about-heading{
-    margin-left: 20px;
-    color: purple;
+.about-heading {
+	margin-left: 20px;
+	color: rgba(150, 88, 230, 0.836);
 }
 
-.about-paragraph{
-    font-size: 25px;
-    margin-top: 50px;
+.about-paragraph {
+	font-size: 22px;
+	margin-top: 50px;
+}
+.jumbo {
+    font-family: 'Lato', sans-serif;
+    color: black;
+}
+.hr{
+    width: 100px;
+    color: rgba(150, 88, 230, 0.836);
+    border: 0.5px solid rgba(150, 88, 230, 0.836);
 }
