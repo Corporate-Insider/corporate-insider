@@ -10,13 +10,11 @@ import About from './Components/About';
 import Insight from './Components/Insight';
 import Footer from './Components/Footer';
 const url = `https://corporate-db.herokuapp.com/companies/`;
-const currentUserURL =
-	'https://corporate-db.herokuapp.com/accounts/current_user/';
 function App() {
 	const [loggedIn, setLoggedIn] = useState(
 		localStorage.getItem('token') ? true : false
 	);
-
+const userId = useState(localStorage.getItem('userId'))
   const [username, setUsername] = useState(localStorage.getItem('user'));
 
 	const [companies, setCompanies] = useState([]);
@@ -75,7 +73,8 @@ function App() {
 						<Insight
               loggedIn={loggedIn}
 							match={routerProps.match}
-							companies={companies}
+              companies={companies}
+              userId={userId}
 							fetchCompanies={fetchCompanies}
 						/>
 					);
