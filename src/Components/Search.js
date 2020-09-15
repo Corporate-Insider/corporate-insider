@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Form, Row, Col, Button, ListGroup } from 'react-bootstrap';
-import {Link, Redirect} from 'react-router-dom';
+import { Form, Row, Button, ListGroup } from 'react-bootstrap';
+import { Link, Redirect } from 'react-router-dom';
 import './Search.css';
 const clearbitURL = `https://autocomplete.clearbit.com/v1/companies/suggest?query=`;
 const url = 'https://corporate-db.herokuapp.com/companies/';
 function Search({ companies, fetchCompanies, loggedIn }) {
 	const [search, setSearch] = useState('');
-    const [submitted, setSubmitted] = useState(false);
-    const [redirectRoute, setRedirectRoute] = useState('')
+	const [submitted, setSubmitted] = useState(false);
+	const [redirectRoute, setRedirectRoute] = useState('');
 	let found = false;
 	let clearbitResult = [];
 
@@ -15,46 +15,54 @@ function Search({ companies, fetchCompanies, loggedIn }) {
 		event.preventDefault();
 		setSearch(event.target.value);
 		setSubmitted(false);
-    }
-    
+	}
+
 	const createCompany = (event, company) => {
 		event.preventDefault();
 		//make a post request
+        if(!found){
+
+        
 		fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(company),
-		}).then(res => res.json()).then((res) => {
-            console.log(res);
-            fetchCompanies();
-            setRedirectRoute(`/insight/${company.name}`);
-            return <Redirect to={redirectRoute} />;
-		});
-	
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				fetchCompanies();
+				
+			}).then(()=>{
+                setRedirectRoute(`/insight/${company.name}`);
+								return <Redirect to={redirectRoute} />;
+            })
+        }
 	};
 	const [fetched, setFetched] = useState('');
 	function handleSubmit(event) {
 		event.preventDefault();
-		setSubmitted(true);
-		if (!found) {
-			fetch(clearbitURL + search)
-				.then((res) => res.json())
-				.then((res) => {
-					console.log(res);
-					clearbitResult = res.map((company, index) => {
-						return (
-							<ListGroup.Item
-								key={index}
-								onClick={(e) => createCompany(e, company)}>
-								{company.name}
-							</ListGroup.Item>
-						);
+		if (loggedIn) {
+			setSubmitted(true);
+			if (!found) {
+				fetch(clearbitURL + search)
+					.then((res) => res.json())
+					.then((res) => {
+						clearbitResult = res.map((company, index) => {
+							return (
+								<ListGroup.Item
+									key={index}
+									onClick={(e) => createCompany(e, company)}>
+									{company.name}
+								</ListGroup.Item>
+							);
+						});
+						setFetched(clearbitResult);
 					});
-					setFetched(clearbitResult);
-				});
-		}
+			}
+        }
+        found = false
 	}
 
 	let matchedCompanies;

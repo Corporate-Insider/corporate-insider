@@ -58,9 +58,13 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 		});
 	};
 	const editModal = (
-		<Modal show={show} onHide={handleClose} animation={false} className='modal'>
+		<Modal
+			show={show}
+			onHide={handleClose}
+			animation={false}
+			className='editmodal'>
 			<Modal.Header closeButton>
-				<Modal.Title>Edit Review</Modal.Title>
+				<Modal.Title className='modalTitle'>Edit Review</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<Form>
@@ -68,6 +72,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 						<Form.Label>Update Review</Form.Label>
 						<Form.Control
 							as='textarea'
+							className='control'
 							rows='3'
 							onChange={handleChangeOnEdit}
 							value={edited.review}
@@ -96,8 +101,8 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 			.catch(console.error);
     };
 	let editDelete =
-		loggedIn && parseInt(userId) === review['user_id'] ? (
-			<Col>
+		loggedIn && (parseInt(userId) === review['user_id'] )? (
+			<Col >
 				<EditIcon onClick={handleShow} /> <Delete onClick={handleDelete} />
 			</Col>
 		) : (

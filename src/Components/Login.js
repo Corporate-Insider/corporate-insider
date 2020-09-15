@@ -21,10 +21,13 @@ function Login({ setLoggedIn }) {
 				localStorage.setItem('token', res.token);
 				localStorage.setItem('user', res.user.name);
 				localStorage.setItem('userId', res.user.id);
+				return res;
 			})
 			.then((res) => {
-				setLoggedIn(true);
-				window.location.replace('/');
+				if (res.token) {
+					setLoggedIn(true);
+					window.location.replace('/');
+				}
 			})
 			.catch((error) => {
 				if (error) {

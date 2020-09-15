@@ -5,8 +5,7 @@ import {
 	Container,
 	Button,
 	Modal,
-	Form,
-	Row,
+	Form
 } from 'react-bootstrap';
 import Review from './Review';
 import './Insight.css';
@@ -68,15 +67,16 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 	const modal = (
 		<Modal show={show} onHide={handleClose} animation={false} className='modal'>
 			<Modal.Header closeButton>
-				<Modal.Title>Create Review</Modal.Title>
+				<Modal.Title className='modalTitle'>Create Review</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<Form>
 					<Form.Group controlId='exampleForm.ControlTextarea1'>
-						<Form.Label>New Review</Form.Label>
+						<Form.Label >New Review</Form.Label>
 						<Form.Control
 							as='textarea'
 							rows='3'
+							className='control'
 							onChange={handleChange}
 							value={newReview.review}
 						/>

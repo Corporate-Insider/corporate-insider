@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Image, Card, Container } from 'react-bootstrap';
 import './Home.css';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,6 @@ function Home({ companies, fetchCompanies, loggedIn }) {
 					let three = 0;
 					let two = 0;
 					let one = 0;
-					let rated = false;
 					if (company) {
 						company.ratings.forEach((rating) => {
 							if (rating.rating === 5) {
@@ -29,7 +28,6 @@ function Home({ companies, fetchCompanies, loggedIn }) {
 							}
 						});
 					}
-					console.log(company);
 					if (company) {
 						defaultRating =
 							(5 * five + 4 * four + 3 * three + 2 * two + one) /

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
-import { Redirect } from 'react-router';
 import './Signup.css';
 const createUrl = `https://corporate-db.herokuapp.com/accounts/create_user/`;
 function SignUp({ setUsername, setLoggedIn }) {
@@ -32,8 +31,10 @@ function SignUp({ setUsername, setLoggedIn }) {
 						localStorage.setItem('user', res.name);
 						localStorage.setItem('userId', res.id);
 						setUsername(res.name);
-						console.log(res);
-						window.location.replace('/');
+						if (res.token) {
+							setLoggedIn(true);
+							window.location.replace('/');
+						}
 					})
 					.catch((error) => {
 						if (error) {
@@ -114,7 +115,7 @@ function SignUp({ setUsername, setLoggedIn }) {
 					onChange={handleChange}
 				/>
 				<p>Passwords must match.</p>
-				<Button className='control' type='submit' className='button'>
+				<Button type='submit' className='button'>
 					{' '}
 					Submit
 				</Button>
