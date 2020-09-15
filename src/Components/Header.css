@@ -21,9 +21,6 @@
     background: rgba(150, 88, 230, 0.836);
     font-weight: bold;
 }
-.button:after {
-  background: purple;
-}
 
 .logo {
 	color: purple;

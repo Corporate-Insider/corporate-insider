@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 function StarRating({ setValue, value, handleRateChange}) {
@@ -12,7 +12,6 @@ function StarRating({ setValue, value, handleRateChange}) {
 						precision={0.5}
 						onChange={(event, newValue) => {
 							setValue(newValue);
-							console.log(newValue);
 							handleRateChange(newValue);
 						}}
 					/>

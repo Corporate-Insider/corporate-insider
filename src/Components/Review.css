@@ -16,17 +16,19 @@
 .uiIcons {
 	margin-left: 60%;
 	margin-right: -30%;
-	width: 100%;
+    width: 100%;
+    cursor: pointer;
 }
 .text {
    margin-top: 4px;
     padding: 5px 8px;
 }
-.modal {
-	width: 85%;
-	margin: 25% auto;
+.editmodal{
+    width: 82%;
 }
-
+.modalTitle{
+    color:purple;
+}
 @media (max-width: 700px) {
 	.uiIcons {
 		margin-right: -25%;
