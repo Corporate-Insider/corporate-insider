@@ -16,7 +16,7 @@ function About(props) {
 
 				<p className='about-paragraph'>
 					We would really appreciate your reviews of the companies you have
-					worked with as it would be of great help to other members of the
+					worked with, it would be of great help to other members of the
 					Corporate Insider community who are actively job searching.
 				</p>
 			</Jumbotron>
