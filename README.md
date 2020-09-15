@@ -6,8 +6,15 @@ Corporate Insider is an app where past and present employees of different compan
 
 ## Corporate Insider View
 
-### Dashboard
+### Dashboard View
 
+![Dashboard](https://user-images.githubusercontent.com/64725210/93175137-c96c6a00-f6f4-11ea-9878-ed5e70f20c64.png)
+
+### Insight Page View
+![Insight Page](https://user-images.githubusercontent.com/64725210/93175238-eb65ec80-f6f4-11ea-8402-7961eddf48b7.png)
+
+### Signup Page View
+![Signup Page](https://user-images.githubusercontent.com/64725210/93175322-105a5f80-f6f5-11ea-89b4-439beb41501a.png)
 
 
 ### User Stories
@@ -21,23 +28,21 @@ Corporate Insider is an app where past and present employees of different compan
 - As a user I would like to give a company a five star rating incase I don’t have the words to describe my experience working with that company.
 - As a user I would like to be able to chat with other users on the app to get more insights from a user about a company that user gave a review on.
 
-## Issues
 
-## DATA
-
+## DATABASE
+Corporate Insider uses a custom made backend which can be found [here](https://github.com/Corporate-Insider/corporate_django). The backend was built with Django and Postgres.
 
 
 ## Technologies
 
-- React js, React Bootstrap, Javascript, CSS, HTML5, Fetch API
+- Reactjs, React Bootstrap, Javascript, CSS, HTML5, Material UI, React Hooks.
 
 ### How to Install Corporate Insider
-
 - Fork and Clone this repository
 - In the directory, run npm install
 
 ### Contributions
 
-I wont be accepting contributions at the moment as this is a personal project and is meant to be a solo project. If you come across any issue while using/installing the app, you can submit an issue on this repository and I will make sure to see to it.
+I wont be accepting contributions at the moment as this is a personal project and is meant to be a solo project. If you come across any issue while using/installing the app, you can submit an issue on this repository and I will make sure to see to check it out.
 
-[Issue Tracker]()
+[Issue Tracker](https://github.com/Corporate-Insider/corporate-insider/issues)
