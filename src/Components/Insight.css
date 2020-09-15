@@ -24,7 +24,8 @@
 }
 .companyInsight {
 	text-align: left;
-	color: purple;
+    color: purple;
+    font-family: 'Lato', sans-serif;
 }
 .theStar {
 	margin-top: 5px;

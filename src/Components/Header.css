@@ -1,11 +1,15 @@
 .nav {
 	background-color: white;
 	margin-bottom: 50px;
-	font-weight: bold;
+    font-weight: bold;
+    
 }
 .user {
 	margin-top: 7px;
 	margin-left: 5px;
+}
+.navLinks{
+    font-family: 'Lato', sans-serif;
 }
 .header {
 	display: flex;
@@ -23,7 +27,8 @@
 
 .logo {
 	color: purple;
-	font-size: 160%;
+    font-size: 160%;
+    font-family: 'Lato', sans-serif;
 }
 .btn {
 	margin-bottom: 5px;

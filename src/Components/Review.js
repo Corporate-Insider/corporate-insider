@@ -63,12 +63,14 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 			animation={false}
 			className='editmodal'>
 			<Modal.Header closeButton>
-				<Modal.Title className='modalTitle'>Edit Review</Modal.Title>
+				<Modal.Title className='modalTitle navLinks'>
+					Edit Review
+				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<Form>
 					<Form.Group controlId='exampleForm.ControlTextarea1'>
-						<Form.Label>Update Review</Form.Label>
+						<Form.Label className='navLinks'>Update Review</Form.Label>
 						<Form.Control
 							as='textarea'
 							className='control'

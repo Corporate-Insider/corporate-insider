@@ -60,12 +60,14 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 	const modal = (
 		<Modal show={show} onHide={handleClose} animation={false} className='modal'>
 			<Modal.Header closeButton>
-				<Modal.Title className='modalTitle'>Create Review</Modal.Title>
+				<Modal.Title className='modalTitle navLinks'>
+					Create Review
+				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<Form>
 					<Form.Group controlId='exampleForm.ControlTextarea1'>
-						<Form.Label>New Review</Form.Label>
+						<Form.Label className='navLinks'>New Review</Form.Label>
 						<Form.Control
 							as='textarea'
 							rows='3'

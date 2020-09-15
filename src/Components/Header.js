@@ -22,11 +22,11 @@ function Header({ loggedIn, setLoggedIn, username, setUsername }) {
 			<Navbar.Collapse id='basic-navbar-nav'>
 				<Nav>
 					<LinkContainer to='/'>
-						<Nav.Link>Companies</Nav.Link>
+						<Nav.Link className='navLinks'>Companies</Nav.Link>
 					</LinkContainer>
 
 					<LinkContainer to='/about'>
-						<Nav.Link>About</Nav.Link>
+						<Nav.Link className='navLinks'>About</Nav.Link>
 					</LinkContainer>
 					<LinkContainer to='/login' className='button'>
 						<Button className='btn-xs btn'>Login</Button>
