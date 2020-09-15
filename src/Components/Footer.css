@@ -1,20 +1,19 @@
 .lisha-logo {
 	width: 100px;
 	margin-left: 15px;
-    margin-bottom: 7px;
+	margin-bottom: 7px;
 }
 
-
-.footer{
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border-top: 1px solid purple;
+.footer {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border-top: 1px solid purple;
 }
-.loGo{
-    font-weight: bold;
-    color: purple;
+.loGo {
+	font-weight: bold;
+	color: purple;
 }
 
-.top-line{
-    margin-top: 7px;
+.top-line {
+	margin-top: 7px;
 }

@@ -6,13 +6,13 @@
 .items {
 	display: flex;
 	flex-direction: row;
-    margin-left: 50%;
-    justify-content: space-between;
+	margin-left: 50%;
+	justify-content: space-between;
 }
-.modal{
-    margin-left:6% ;
-    width: 83%;
-    margin-top: 15%;
+.modal {
+	margin-left: 6%;
+	width: 83%;
+	margin-top: 15%;
 }
 .newReviewButton {
 	background: rgba(150, 88, 230, 0.836);
@@ -34,7 +34,7 @@
 		width: 100%;
 	}
 	.items {
-		margin-left: 0%;
+		margin-left: 5%;
 		width: 100%;
 	}
 	.newReviewButton {
@@ -46,31 +46,31 @@
 		margin-right: 10%;
 		width: 190px;
 		font-size: 14px;
-    }
-    .theStar{
-        margin-left: 5px;
-    }
+	}
+	.theStar {
+		margin-left: 5px;
+	}
 }
 
-@media (max-width: 340px){
-    .theStar{
-        margin-right: -28%;
-        margin-left: 27px;
-    }
-    .newReviewButton{
-        margin-right:13% ;
-    }
+@media (max-width: 340px) {
+	.theStar {
+		margin-right: -28%;
+		margin-left: 27px;
+	}
+	.newReviewButton {
+		margin-right: 13%;
+	}
 }
-@media (max-width: 290px){
-    .theStar{
-        margin-right: -45%;
-        margin-left: 12px;
-    }
-    .newReviewButton{
-        margin-right:13%;
-        margin-top: 2px;
-        font-size: 12px;
-        height: 35px;
-        width: 100px;
-    }
+@media (max-width: 290px) {
+	.theStar {
+		margin-right: -45%;
+		margin-left: 12px;
+	}
+	.newReviewButton {
+		margin-right: 13%;
+		margin-top: 2px;
+		font-size: 12px;
+		height: 35px;
+		width: 100px;
+	}
 }

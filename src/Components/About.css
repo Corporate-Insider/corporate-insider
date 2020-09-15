@@ -12,11 +12,12 @@
 	margin-top: 50px;
 }
 .jumbo {
-    font-family: 'Lato', sans-serif;
+	font-family: 'Lato', sans-serif;
     color: black;
+    text-align: center;
 }
-.hr{
-    width: 100px;
-    color: rgba(150, 88, 230, 0.836);
-    border: 0.5px solid rgba(150, 88, 230, 0.836);
+.hr {
+	width: 100px;
+	color: rgba(150, 88, 230, 0.836);
+	border: 0.5px solid rgba(150, 88, 230, 0.836);
 }

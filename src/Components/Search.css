@@ -1,11 +1,11 @@
 .searchInput {
 	width: 70%;
-    margin: 0 auto;
-    border: 1px solid rgba(226, 166, 226, 0.7);
+	margin: 0 auto;
+	border: 1px solid rgba(226, 166, 226, 0.7);
 }
-.searchControl{
-    height: 100%;
-    border: 1px solid rgba(226, 166, 226, 0.7);
+.searchControl {
+	height: 100%;
+	border: 1px solid rgba(226, 166, 226, 0.7);
 }
 .searchForm {
 	width: 88%;
@@ -30,6 +30,6 @@
 }
 @media (max-width: 320px) {
 	.searchInput {
-	width: 61%;
-}
+		width: 61%;
+	}
 }

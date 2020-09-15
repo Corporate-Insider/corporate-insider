@@ -20,25 +20,23 @@ function Search({ companies, fetchCompanies, loggedIn }) {
 	const createCompany = (event, company) => {
 		event.preventDefault();
 		//make a post request
-        if(!found){
-
-        
-		fetch(url, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(company),
-		})
-			.then((res) => res.json())
-			.then((res) => {
-				fetchCompanies();
-				
-			}).then(()=>{
-                setRedirectRoute(`/insight/${company.name}`);
-								return <Redirect to={redirectRoute} />;
-            })
-        }
+		if (!found) {
+			fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(company),
+			})
+				.then((res) => res.json())
+				.then((res) => {
+					fetchCompanies();
+				})
+				.then(() => {
+					setRedirectRoute(`/insight/${company.name}`);
+					return <Redirect to={redirectRoute} />;
+				});
+		}
 	};
 	const [fetched, setFetched] = useState('');
 	function handleSubmit(event) {
@@ -61,8 +59,8 @@ function Search({ companies, fetchCompanies, loggedIn }) {
 						setFetched(clearbitResult);
 					});
 			}
-        }
-        found = false
+		}
+		found = false;
 	}
 
 	let matchedCompanies;

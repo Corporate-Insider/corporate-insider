@@ -1,63 +1,60 @@
-.mainCard{
-    margin:20px 5px;
-    border: 1px solid rgb(219, 185, 219, 0.5);
-    height: 100px;
-    text-align: center;
+.mainCard {
+	margin: 20px 5px;
+	border: 1px solid rgb(219, 185, 219, 0.5);
+	height: 100px;
+	text-align: center;
 }
-.card{
-    display: flex;
-    flex-direction: row; 
+.card {
+	display: flex;
+	flex-direction: row;
 }
-.companyLogo{
-   width: 100px; 
-   margin-right: 20px;
-   height: 100%;
-}
-
-.homeContainer{
-    margin-top:70px;
-}
-.homeItems{
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 80%;
-    margin-top: 34px;
-}
-.companyName{
-    font-size: 2rem;
-    margin-left: 5%;
-    width: 50%;
+.companyLogo {
+	width: 100px;
+	margin-right: 20px;
+	height: 100%;
 }
 
-@media (max-width:500px) {
-.homeItems{
-    flex-direction: column;
-    margin-left: 18%;
-    margin-top: 15px;
+.homeContainer {
+	margin-top: 70px;
 }
-.companyName{
-    width: 100%;
-    margin-left: -25%;
+.homeItems {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	width: 80%;
+	margin-top: 34px;
 }
-.star{
-   margin-left: -5%;
-}
-
-}
-@media (max-width:420px) {
-.star{
-   margin-left: -25%;
+.companyName {
+	font-size: 2rem;
+	margin-left: 5%;
+	width: 50%;
 }
 
+@media (max-width: 500px) {
+	.homeItems {
+		flex-direction: column;
+		margin-left: 18%;
+		margin-top: 15px;
+	}
+	.companyName {
+		width: 100%;
+		margin-left: -25%;
+	}
+	.star {
+		margin-left: -5%;
+	}
 }
-@media (max-width:320px) {
-    .companyName{
-    margin-left: -45%;
+@media (max-width: 420px) {
+	.star {
+		margin-left: -25%;
+	}
 }
-.star{
-   margin-left: -45%;
-   margin-right: auto;
-}
-
+@media (max-width: 320px) {
+	.companyName {
+		margin-left: -45%;
+	}
+	.star {
+		margin-left: -45%;
+		margin-right: auto;
+	}
 }

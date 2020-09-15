@@ -1,12 +1,11 @@
 .nav {
 	background-color: white;
 	margin-bottom: 50px;
-    font-weight: bold;
-  
+	font-weight: bold;
 }
-.user{
-    margin-top: 7px;
-    margin-left: 5px;
+.user {
+	margin-top: 7px;
+	margin-left: 5px;
 }
 .header {
 	display: flex;
@@ -17,24 +16,24 @@
 .button {
 	margin-left: 15px;
 	text-align: center;
-    padding: 7px;
-    background: rgba(150, 88, 230, 0.836);
-    font-weight: bold;
+	padding: 7px;
+	background: rgba(150, 88, 230, 0.836);
+	font-weight: bold;
 }
 
 .logo {
 	color: purple;
 	font-size: 160%;
 }
-.btn{
-    margin-bottom: 5px;
+.btn {
+	margin-bottom: 5px;
 }
 @media (max-width: 600px) {
-	.btn{
-    margin-bottom: 5px;
-}
-.user{
-    margin-top: 7px;
-    margin-left: 0;
-}
+	.btn {
+		margin-bottom: 5px;
+	}
+	.user {
+		margin-top: 7px;
+		margin-left: 0;
+	}
 }

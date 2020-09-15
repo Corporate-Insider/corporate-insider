@@ -2,21 +2,17 @@ import React from 'react';
 import './Header.css';
 import { Nav, Button, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-function Header({loggedIn, setLoggedIn, username,setUsername }) {
-    const handleLogOut = () => {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            localStorage.removeItem('userId');
-            setLoggedIn(false);
-            setUsername('');
-		};
+function Header({ loggedIn, setLoggedIn, username, setUsername }) {
+	const handleLogOut = () => {
+		localStorage.removeItem('token');
+		localStorage.removeItem('user');
+		localStorage.removeItem('userId');
+		setLoggedIn(false);
+		setUsername('');
+	};
 
 	const loggedOutNav = (
-		<Navbar
-			className='nav'
-			collapseOnSelect
-			variant='light'
-			expand='md'>
+		<Navbar className='nav' collapseOnSelect variant='light' expand='md'>
 			<LinkContainer to='/'>
 				<Navbar.Brand>
 					<h1 className='logo'>Corporate Insider</h1>
@@ -44,11 +40,7 @@ function Header({loggedIn, setLoggedIn, username,setUsername }) {
 		</Navbar>
 	);
 	const loggedInNav = (
-		<Navbar
-			className='nav'
-			collapseOnSelect
-			variant='light'
-			expand='md'>
+		<Navbar className='nav' collapseOnSelect variant='light' expand='md'>
 			<LinkContainer to='/'>
 				<Navbar.Brand>
 					<h1 className='logo'>Corporate Insider</h1>
@@ -64,7 +56,9 @@ function Header({loggedIn, setLoggedIn, username,setUsername }) {
 					<LinkContainer to='/about'>
 						<Nav.Link>About</Nav.Link>
 					</LinkContainer>
-					<h5 className='user'>{loggedIn ? `Hi, ${username}` : 'Please Log In'}</h5>
+					<h5 className='user'>
+						{loggedIn ? `Hi, ${username}` : 'Please Log In'}
+					</h5>
 					<Button onClick={handleLogOut} className='btn-sm btn button'>
 						Logout
 					</Button>
@@ -73,10 +67,7 @@ function Header({loggedIn, setLoggedIn, username,setUsername }) {
 		</Navbar>
 	);
 
-	
-
 	return loggedIn ? loggedInNav : loggedOutNav;
-
 }
 
 export default Header;

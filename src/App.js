@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Header from './Components/Header';
 import Home from './Components/Home';
 import { Container } from 'react-bootstrap';
@@ -14,8 +13,8 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(
 		localStorage.getItem('token') ? true : false
 	);
-const userId = useState(localStorage.getItem('userId'))
-  const [username, setUsername] = useState(localStorage.getItem('user'));
+	const userId = useState(localStorage.getItem('userId'));
+	const [username, setUsername] = useState(localStorage.getItem('user'));
 
 	const [companies, setCompanies] = useState([]);
 	const fetchCompanies = () => {
@@ -29,7 +28,7 @@ const userId = useState(localStorage.getItem('userId'))
 	};
 
 	useEffect(() => {
-    fetchCompanies();
+		fetchCompanies();
 	}, []);
 
 	return (
@@ -38,14 +37,20 @@ const userId = useState(localStorage.getItem('userId'))
 				loggedIn={loggedIn}
 				setLoggedIn={setLoggedIn}
 				setUsername={setUsername}
-        username={username}
+				username={username}
 			/>
 
 			<Route
 				path='/'
 				exact
 				render={() => {
-					return <Home companies={companies} fetchCompanies ={fetchCompanies} loggedIn={loggedIn}/>;
+					return (
+						<Home
+							companies={companies}
+							fetchCompanies={fetchCompanies}
+							loggedIn={loggedIn}
+						/>
+					);
 				}}
 			/>
 			<Route path='/about' component={About} />
@@ -58,12 +63,7 @@ const userId = useState(localStorage.getItem('userId'))
 			<Route
 				path='/signup'
 				render={() => {
-					return (
-						<SignUp
-							setLoggedIn={setLoggedIn}
-							setUsername={setUsername}
-						/>
-					);
+					return <SignUp setLoggedIn={setLoggedIn} setUsername={setUsername} />;
 				}}
 			/>
 			<Route
@@ -71,17 +71,17 @@ const userId = useState(localStorage.getItem('userId'))
 				render={(routerProps) => {
 					return (
 						<Insight
-              loggedIn={loggedIn}
+							loggedIn={loggedIn}
 							match={routerProps.match}
-              companies={companies}
-              userId={userId}
+							companies={companies}
+							userId={userId}
 							fetchCompanies={fetchCompanies}
 						/>
 					);
 				}}
 			/>
 			<Redirect path='*' to='/' />
-      <Footer/>
+			<Footer />
 		</Container>
 	);
 }

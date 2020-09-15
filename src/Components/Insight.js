@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
-import {
-	Tabs,
-	Tab,
-	Container,
-	Button,
-	Modal,
-	Form
-} from 'react-bootstrap';
+import { Tabs, Tab, Container, Button, Modal, Form } from 'react-bootstrap';
 import Review from './Review';
 import './Insight.css';
 import StaticRating from './StaticRating';
-import StarRating from './StarRating'
+import StarRating from './StarRating';
 
 function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 	const url = `https://corporate-db.herokuapp.com/reviews/`;
 	const ratingURL = `https://corporate-db.herokuapp.com/ratings/`;
 	const [key, setKey] = useState('insights');
-    const [value, setValue] = useState(0);
-    const [show, setShow] = useState(false);
+	const [value, setValue] = useState(0);
+	const [show, setShow] = useState(false);
 	let company;
 
 	companies.forEach((comp) => {
@@ -39,7 +32,7 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 			user_id: newReview.user_id,
 		});
 	};
-	
+
 	const handleClose = () => setShow(false);
 
 	const handleShow = () => {
@@ -72,7 +65,7 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 			<Modal.Body>
 				<Form>
 					<Form.Group controlId='exampleForm.ControlTextarea1'>
-						<Form.Label >New Review</Form.Label>
+						<Form.Label>New Review</Form.Label>
 						<Form.Control
 							as='textarea'
 							rows='3'
@@ -144,7 +137,7 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 
 	const starRating =
 		(loggedIn && rated) || !loggedIn ? (
-			<StaticRating defaultRating={defaultRating}/>
+			<StaticRating defaultRating={defaultRating} />
 		) : (
 			<StarRating
 				value={value}
@@ -152,7 +145,6 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 				handleRateChange={handleRateChange}
 			/>
 		);
-
 
 	return company ? (
 		<Container>
@@ -164,10 +156,12 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 				<Tab eventKey='insights' title='Company Insights'>
 					<Container>
 						<div className='items'>
-							<Button onClick={handleShow} className='newReviewButton'>
-								New Review
-							</Button>
-							< div className='theStar' >{starRating}</div>
+							{loggedIn && (
+								<Button onClick={handleShow} className='newReviewButton'>
+									New Review
+								</Button>
+							)}
+							<div className='theStar'>{starRating}</div>
 						</div>
 						{modal}
 						<Container className='reviews'>

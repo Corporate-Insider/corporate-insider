@@ -5,7 +5,6 @@ import Delete from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 const key = process.env.REACT_APP_MYAPI_KEY;
 function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
-	
 	const url = `https://corporate-db.herokuapp.com/reviews/${review.id}/${key}`;
 
 	const [edited, setEdited] = useState({
@@ -13,7 +12,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 		rated: review.rated,
 		rating: review.rating,
 		review: review.review,
-		user_id:userId,
+		user_id: userId,
 	});
 	const handleChangeOnEdit = (event) => {
 		event.preventDefault();
@@ -99,10 +98,10 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 				return fetchCompanies();
 			})
 			.catch(console.error);
-    };
+	};
 	let editDelete =
-		loggedIn && (parseInt(userId) === review['user_id'] )? (
-			<Col >
+		loggedIn && parseInt(userId) === review['user_id'] ? (
+			<Col>
 				<EditIcon onClick={handleShow} /> <Delete onClick={handleDelete} />
 			</Col>
 		) : (
