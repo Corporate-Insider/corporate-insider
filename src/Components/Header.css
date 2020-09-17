@@ -27,7 +27,8 @@
 
 .logo {
 	color: purple;
-    font-size: 160%;
+	font-size: 160%;
+	font-weight: bold;
     font-family: 'Port Lligat Sans', sans-serif;
 }
 .btn {
