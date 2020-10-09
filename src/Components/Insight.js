@@ -4,6 +4,7 @@ import Review from './Review';
 import './Insight.css';
 import StaticRating from './StaticRating';
 import StarRating from './StarRating';
+import NewReviewForm from './NewReviewForm';
 
 function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 	const url = `https://corporate-db.herokuapp.com/reviews/`;
@@ -57,37 +58,6 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 		});
 	}
 	//modal for new review
-	const modal = (
-		<Modal show={show} onHide={handleClose} animation={false} className='modal'>
-			<Modal.Header closeButton>
-				<Modal.Title className='modalTitle navLinks'>
-					Create Review
-				</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
-				<Form>
-					<Form.Group controlId='exampleForm.ControlTextarea1'>
-						<Form.Label className='navLinks'>New Review</Form.Label>
-						<Form.Control
-							as='textarea'
-							rows='3'
-							className='control'
-							onChange={handleChange}
-							value={newReview.review}
-						/>
-					</Form.Group>
-				</Form>
-			</Modal.Body>
-			<Modal.Footer>
-				<Button variant='secondary' onClick={handleClose}>
-					Close
-				</Button>
-				<Button variant='primary' onClick={handleSubmit}>
-					Submit
-				</Button>
-			</Modal.Footer>
-		</Modal>
-	);
 
 	let defaultRating;
 	let five = 0;
@@ -165,7 +135,13 @@ function Insight({ match, companies, fetchCompanies, loggedIn, userId }) {
 							)}
 							<div className='theStar'>{starRating}</div>
 						</div>
-						{modal}
+						<NewReviewForm
+							show={show}
+							handleClose={handleClose}
+							handleChange={handleChange}
+							newReview={newReview}
+							handleSubmit={handleSubmit}
+						/>
 						<Container className='reviews'>
 							{company.reviews.map((review, index) => {
 								return (

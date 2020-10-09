@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Button, Form } from 'react-bootstrap';
 import './Review.css';
+import EditReviewForm from './EditReviewForm';
 import Delete from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 const key = process.env.REACT_APP_MYAPI_KEY;
@@ -56,41 +57,6 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 			return fetchCompanies();
 		});
 	};
-	const editModal = (
-		<Modal
-			show={show}
-			onHide={handleClose}
-			animation={false}
-			className='editmodal'>
-			<Modal.Header closeButton>
-				<Modal.Title className='modalTitle navLinks'>
-					Edit Review
-				</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
-				<Form>
-					<Form.Group controlId='exampleForm.ControlTextarea1'>
-						<Form.Label className='navLinks'>Update Review</Form.Label>
-						<Form.Control
-							as='textarea'
-							className='control'
-							rows='3'
-							onChange={handleChangeOnEdit}
-							value={edited.review}
-						/>
-					</Form.Group>
-				</Form>
-			</Modal.Body>
-			<Modal.Footer>
-				<Button variant='secondary' onClick={handleClose}>
-					Close
-				</Button>
-				<Button variant='primary' onClick={handleEdit}>
-					Save
-				</Button>
-			</Modal.Footer>
-		</Modal>
-	);
 
 	const handleDelete = () => {
 		fetch(url, {
@@ -112,7 +78,13 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 
 	return (
 		<Row border='light' className='reviewCard'>
-			{editModal}
+			<EditReviewForm
+				show={show}
+				handleClose={handleClose}
+				handleChangeOnEdit={handleChangeOnEdit}
+				edited={edited}
+				handleEdit={handleEdit}
+			/>
 			<div className='uiIcons'>{editDelete}</div>
 			<p className='text'>{review.review}</p>
 		</Row>
