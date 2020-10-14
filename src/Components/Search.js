@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Row, Button, ListGroup } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import './Search.css';
 const clearbitURL = `https://autocomplete.clearbit.com/v1/companies/suggest?query=`;
 const url = 'https://corporate-db.herokuapp.com/companies/';
 function Search({ companies, fetchCompanies, loggedIn }) {
 	const [search, setSearch] = useState('');
 	const [submitted, setSubmitted] = useState(false);
-	const [redirectRoute, setRedirectRoute] = useState('');
+	const [created, setCreated] = useState(false);
 	let found = false;
 	let clearbitResult = [];
 
@@ -19,7 +19,7 @@ function Search({ companies, fetchCompanies, loggedIn }) {
 
 	const createCompany = (event, company) => {
 		event.preventDefault();
-		//make a post request
+		
 		if (!found) {
 			fetch(url, {
 				method: 'POST',
@@ -33,8 +33,7 @@ function Search({ companies, fetchCompanies, loggedIn }) {
 					fetchCompanies();
 				})
 				.then(() => {
-					setRedirectRoute(`/insight/${company.name}`);
-					return <Redirect to={redirectRoute} />;
+					setCreated(true);
 				});
 		}
 	};
@@ -120,7 +119,7 @@ function Search({ companies, fetchCompanies, loggedIn }) {
 						)}
 					</Row>
 				</Form>
-				<ListGroup className='dropDown'>{matchedCompanies}</ListGroup>
+				<ListGroup className='dropDown'>{!created && matchedCompanies}</ListGroup>
 			</Row>
 		</div>
 	);
