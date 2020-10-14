@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Modal, Button, Form } from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 import './Review.css';
 import EditReviewForm from './EditReviewForm';
 import Delete from '@material-ui/icons/Delete';

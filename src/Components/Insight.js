@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Container, Button, Modal, Form } from 'react-bootstrap';
+import { Tabs, Tab, Container, Button} from 'react-bootstrap';
 import Review from './Review';
 import './Insight.css';
 import StaticRating from './StaticRating';
