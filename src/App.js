@@ -13,7 +13,7 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(
 		localStorage.getItem('token') ? true : false
 	);
-	const userId = useState(localStorage.getItem('userId'));
+	const [userId, setUserId] = useState(localStorage.getItem('userId'));
 	const [username, setUsername] = useState(localStorage.getItem('user'));
 
 	const [companies, setCompanies] = useState([]);

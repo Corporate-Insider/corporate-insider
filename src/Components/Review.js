@@ -19,8 +19,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 		event.preventDefault();
 		setEdited({
 			company_id: companyId,
-			rated: review.rated,
-			rating: review.rating,
+			id: review.id,
 			review: event.target.value,
 			user_id: userId,
 		});
@@ -30,8 +29,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 	const handleShow = () => {
 		setEdited({
 			company_id: companyId,
-			rated: review.rated,
-			rating: review.rating,
+			id:review.id,
 			review: review.review,
 			user_id: userId,
 		});
@@ -56,6 +54,7 @@ function Review({ review, fetchCompanies, companyId, loggedIn, userId }) {
 			});
 			return fetchCompanies();
 		});
+		console.log(edited)
 	};
 
 	const handleDelete = () => {
